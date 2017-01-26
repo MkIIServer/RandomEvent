@@ -27,7 +27,7 @@ public class Config {
         YamlConfiguration events = new YamlConfiguration();
         
         events.set("give_diamond.priority", 5);
-        events.set("give_diamond.event_effect", new String[]{
+        events.set("give_diamond.execute", new String[]{
                 "GENERATE_RANDOM_PLAYER",
                 "MESSAGE --player {player} --msg 撿到鑽石拉!!!",
                 "COMMAND --cmd give {player} diamond"
@@ -35,7 +35,7 @@ public class Config {
         
         /*
         events.set("ender_dragon.priority", 1);
-        events.set("ender_dragon.event", new String[]{
+        events.set("ender_dragon.execute", new String[]{
                 "GENERATE_RANDOM_LOCATION --world " + Bukkit.getWorlds().get(0).getName() + 
                     " --y-lower 255 --y-higher 150",
                 "SPAWN_MOB --spawn ENDER_DRAGON --location {world} {x} {y} {z}",
@@ -44,7 +44,7 @@ public class Config {
         
         events.set("treasure.priority", 5);
         
-        events.set("treasure.event", new String[]{
+        events.set("treasure.execute", new String[]{
                 "GENERATE_RANDOM_LOCATION --world " + Bukkit.getWorlds().get(0).getName() + 
                     " --y-lower 200 --y-higher 20",
                 "SPAWN_TREASURE --location {world} {x} {y} {z} --random-x 20 --random-z 20",
@@ -52,13 +52,13 @@ public class Config {
             });
         
         events.set("speed_dig.priority", 5);
-        events.set("speed_dig.event", new String[]{
+        events.set("speed_dig.execute", new String[]{
             "KEEP_EFFECT_ALL_PLAYER --effect FAST_DIGGING --level 1 --time 1200 --period 10",
             "KEEP_MESSAGE_WHEN_JOIN --time 1200 --msg 感覺手特別快, 趕快挖礦哦!",
         });
         
         events.set("never_hungry.priority", 5);
-        events.set("never_hungry.event", new String[]{
+        events.set("never_hungry.execute", new String[]{
             "KEEP_EFFECT_ALL_PLAYER --effect SATURATION --level 1 --time 1200 --period 10",
                 "KEEP_MESSAGE_WHEN_JOIN --time 1200 --msg 剛剛吃太飽, 不會餓了!",
         });
