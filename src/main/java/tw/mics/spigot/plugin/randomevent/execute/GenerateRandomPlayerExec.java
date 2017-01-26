@@ -4,8 +4,8 @@ import java.util.List;
 
 public class GenerateRandomPlayerExec implements AbstractExec {
     @Override
-    public String getEventName() {
-        return "COMMAND";
+    public String getExecName() {
+        return "GENERATE_RANDOM_PLAYER";
     }
 
     @Override

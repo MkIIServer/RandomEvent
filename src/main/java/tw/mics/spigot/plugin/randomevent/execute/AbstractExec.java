@@ -6,7 +6,7 @@ import java.util.List;
 import tw.mics.spigot.plugin.randomevent.exception.ExecuteSetParameterException;
 
 public interface AbstractExec {
-    public String getEventName();
+    public String getExecName();
     public void setParameter(String para) throws ExecuteSetParameterException;
     public List<String> run(List<String> memory);
     

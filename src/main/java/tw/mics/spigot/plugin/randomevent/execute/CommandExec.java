@@ -4,7 +4,7 @@ import java.util.List;
 
 public class CommandExec implements AbstractExec {
     @Override
-    public String getEventName() {
+    public String getExecName() {
         return "COMMAND";
     }
 

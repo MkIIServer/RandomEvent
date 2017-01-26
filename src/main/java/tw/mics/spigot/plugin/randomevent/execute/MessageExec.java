@@ -6,8 +6,8 @@ import tw.mics.spigot.plugin.randomevent.exception.ExecuteSetParameterException;
 
 public class MessageExec implements AbstractExec {
     @Override
-    public String getEventName() {
-        return "COMMAND";
+    public String getExecName() {
+        return "MESSAGE";
     }
 
     @Override

@@ -6,9 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 
+import tw.mics.spigot.plugin.randomevent.ExecManager;
 import tw.mics.spigot.plugin.randomevent.RandomEvent;
+import tw.mics.spigot.plugin.randomevent.exception.ExecuteNotExistException;
+import tw.mics.spigot.plugin.randomevent.execute.AbstractExec;
 
 public class Config {
     static YamlConfiguration cfg;
@@ -79,6 +83,31 @@ public class Config {
     static List<ConfigEvent> events;
     public static void load() {
         events = new ArrayList<ConfigEvent>();
+        ConfigurationSection cfg_events = cfg.getConfigurationSection("events");
+        cancel_this_event:
+        for(String event_name : cfg_events.getKeys(false)){
+            ConfigEvent event = new ConfigEvent(event_name, cfg_events.getInt(event_name + ".priority"));
+            for(String exec_line : cfg_events.getStringList(event_name + ".execute")){
+                String[] temp = exec_line.split(" ", 2);
+                String exec_name = temp[0];
+                String exec_para = temp.length == 2 ? temp[1] : null;
+                try {
+                    AbstractExec exec = ExecManager.getInstange().createExec(exec_name, exec_para);
+                    event.addExec(exec);
+                } catch (ExecuteNotExistException e) {
+                    RandomEvent.getInstance().getLogger().log(Level.WARNING, "========================================");
+                    RandomEvent.getInstance().getLogger().log(Level.WARNING, 
+                            String.format("event %s have para error on exec line: ", exec_name ));
+                    RandomEvent.getInstance().getLogger().log(Level.WARNING, exec_line);
+                    RandomEvent.getInstance().getLogger().log(Level.WARNING, e.getErrorMessage());
+                    RandomEvent.getInstance().getLogger().log(Level.WARNING, 
+                            String.format("event %s is removed on list", exec_name ));
+                    RandomEvent.getInstance().getLogger().log(Level.WARNING, "========================================");
+                    continue cancel_this_event;
+                }
+            }
+            events.add(event);
+        }
     }
     
     private static void set_config_if_not_exist(String path, Object value){

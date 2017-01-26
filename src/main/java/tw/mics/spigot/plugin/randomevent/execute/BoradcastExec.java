@@ -3,7 +3,7 @@ package tw.mics.spigot.plugin.randomevent.execute;
 import java.util.List;
 
 public class BoradcastExec implements AbstractExec {
-    public String getEventName() {
+    public String getExecName() {
         return "BORADCAST";
     }
 
