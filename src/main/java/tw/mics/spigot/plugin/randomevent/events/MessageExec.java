@@ -1,8 +1,8 @@
 package tw.mics.spigot.plugin.randomevent.events;
 
-public class MessageEvent implements AbstractEvent {
+public class MessageExec implements AbstractExec {
     @Override
     public String getEventName() {
-        return "MESSAGE";
+        return "COMMAND";
     }
 }

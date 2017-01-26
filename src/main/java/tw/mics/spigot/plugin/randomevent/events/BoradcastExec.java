@@ -1,8 +1,7 @@
 package tw.mics.spigot.plugin.randomevent.events;
 
-public class CommandEvent implements AbstractEvent {
-    @Override
+public class BoradcastExec implements AbstractExec {
     public String getEventName() {
-        return "COMMAND";
+        return "BORADCAST";
     }
 }

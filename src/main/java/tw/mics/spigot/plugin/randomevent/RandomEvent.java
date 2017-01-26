@@ -9,8 +9,8 @@ public class RandomEvent extends JavaPlugin {
     
     public void onEnable() {
         instance = this;
-        EventManager.init();
-        Config.load();
+        ExecManager.init();
+        Config.init();
     }
     
 

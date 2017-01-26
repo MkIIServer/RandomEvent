@@ -1,8 +1,8 @@
 package tw.mics.spigot.plugin.randomevent.events;
 
-public class SpawnTreasureEvent implements AbstractEvent {
+public class GenerateRandomPlayerExec implements AbstractExec {
     @Override
     public String getEventName() {
-        return "SPAWN_TREASURE";
+        return "COMMAND";
     }
 }
