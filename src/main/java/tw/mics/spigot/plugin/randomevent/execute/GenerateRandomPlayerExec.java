@@ -1,4 +1,4 @@
-package tw.mics.spigot.plugin.randomevent.events;
+package tw.mics.spigot.plugin.randomevent.execute;
 
 public class GenerateRandomPlayerExec implements AbstractExec {
     @Override

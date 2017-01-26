@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import tw.mics.spigot.plugin.randomevent.events.AbstractExec;
-import tw.mics.spigot.plugin.randomevent.events.BoradcastExec;
+import tw.mics.spigot.plugin.randomevent.execute.AbstractExec;
+import tw.mics.spigot.plugin.randomevent.execute.BoradcastExec;
 
 public class ExecManager {
     private static ExecManager instance;

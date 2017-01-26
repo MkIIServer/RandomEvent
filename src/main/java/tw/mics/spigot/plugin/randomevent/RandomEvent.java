@@ -11,6 +11,7 @@ public class RandomEvent extends JavaPlugin {
         instance = this;
         ExecManager.init();
         Config.init();
+        Config.load();
     }
     
 
