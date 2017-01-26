@@ -10,10 +10,12 @@ import tw.mics.spigot.plugin.randomevent.execute.BoradcastExec;
 public class ExecManager {
     private static ExecManager instance;
     private static Logger logger;
-    HashMap<String, AbstractExec> event_list;
+    @SuppressWarnings("rawtypes")
+    HashMap<String, Class> event_list;
     
+    @SuppressWarnings("rawtypes")
     ExecManager(){
-        event_list = new HashMap<String, AbstractExec>();
+        event_list = new HashMap<String, Class>();
         registerEvent(new BoradcastExec());
     }
     
@@ -23,7 +25,7 @@ public class ExecManager {
             logger.log(Level.WARNING, "Can't load event " + event_name);
             return;
         }
-        event_list.put(event_name, event);
+        event_list.put(event_name, event.getClass());
     }
 
     public static void init() {

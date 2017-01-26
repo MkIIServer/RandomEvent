@@ -2,6 +2,8 @@ package tw.mics.spigot.plugin.randomevent.config;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -11,7 +13,6 @@ import tw.mics.spigot.plugin.randomevent.RandomEvent;
 public class Config {
     static YamlConfiguration cfg;
     static Boolean cfg_save_flag;
-    
     
     public static void init() {
         RandomEvent.getInstance().getDataFolder().mkdirs();
@@ -74,8 +75,10 @@ public class Config {
         }
     }
 
+
+    static List<ConfigEvent> events;
     public static void load() {
-        
+        events = new ArrayList<ConfigEvent>();
     }
     
     private static void set_config_if_not_exist(String path, Object value){
