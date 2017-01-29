@@ -96,7 +96,7 @@ public class Config {
                 } catch (RandomEventException e) {
                     String error_msg = new String();
                     error_msg += System.lineSeparator() + "============================================================";
-                    error_msg += System.lineSeparator() + String.format("event %s have parameter error on exec line: ", exec_name );
+                    error_msg += System.lineSeparator() + String.format("event %s have parameter error on exec line: ", event_name );
                     error_msg += System.lineSeparator() +  exec_line;
                     error_msg += System.lineSeparator() + "Exception: " + e.getClass().getSimpleName();
                     error_msg += System.lineSeparator() + "Message: " + e.getErrorMessage();

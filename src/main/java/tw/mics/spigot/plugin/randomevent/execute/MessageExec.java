@@ -19,7 +19,13 @@ public class MessageExec implements AbstractExec {
     @Override
     public void setParameter(String para) throws ExecuteSetParameterException {
         target = AbstractExec.getParameter("target", para);
+        if(target == null){
+            throw new  ExecuteSetParameterException("This execute have to add --target @all or --target player_name");
+        }
         message = AbstractExec.getParameter("msg", para);
+        if(message == null){
+            throw new  ExecuteSetParameterException("This execute have to add --msg Messages");
+        }
     }
 
     @Override
