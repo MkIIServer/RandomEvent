@@ -33,8 +33,8 @@ public interface AbstractExec {
     
     public static String replaceMemory(String str, HashMap<String, String> memory){
         for(String m : memory.keySet()){
-            str = str.replaceAll(String.format("{%s}",m), memory.get(m));
+            str = str.replaceAll(String.format("\\{%s\\}",m), memory.get(m));
         }
-        return str;
+        return str.trim();
     }
 }

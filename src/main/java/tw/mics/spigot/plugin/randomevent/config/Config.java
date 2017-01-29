@@ -2,8 +2,7 @@ package tw.mics.spigot.plugin.randomevent.config;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.logging.Level;
 
 import org.bukkit.configuration.ConfigurationSection;
@@ -80,9 +79,9 @@ public class Config {
     }
 
 
-    static List<ConfigEvent> events;
+    static HashMap<String, ConfigEvent> events;
     public static void load() {
-        events = new ArrayList<ConfigEvent>();
+        events = new HashMap<String, ConfigEvent>();
         ConfigurationSection cfg_events = cfg.getConfigurationSection("events");
         cancel_this_event:
         for(String event_name : cfg_events.getKeys(false)){
@@ -107,8 +106,12 @@ public class Config {
                     continue cancel_this_event;
                 }
             }
-            events.add(event);
+            events.put(event_name, event);
         }
+    }
+    
+    public static ConfigEvent getEvent(String event_name){
+        return events.get(event_name);
     }
     
     private static void set_config_if_not_exist(String path, Object value){

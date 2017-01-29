@@ -4,6 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import tw.mics.spigot.plugin.randomevent.EventManager;
 import tw.mics.spigot.plugin.randomevent.RandomEvent;
 
 public class EventCommand implements CommandExecutor {
@@ -14,7 +15,8 @@ public class EventCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        return false;
+        EventManager.spawnEvent("give_diamond");
+        return true;
     }
 
 }
