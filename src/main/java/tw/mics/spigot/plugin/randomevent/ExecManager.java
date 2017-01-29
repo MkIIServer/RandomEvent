@@ -8,6 +8,7 @@ import tw.mics.spigot.plugin.randomevent.exception.ExecuteNotExistException;
 import tw.mics.spigot.plugin.randomevent.exception.ExecuteSetParameterException;
 import tw.mics.spigot.plugin.randomevent.execute.AbstractExec;
 import tw.mics.spigot.plugin.randomevent.execute.CommandExec;
+import tw.mics.spigot.plugin.randomevent.execute.ExitIfExec;
 import tw.mics.spigot.plugin.randomevent.execute.GenerateRandomPlayerExec;
 import tw.mics.spigot.plugin.randomevent.execute.MessageExec;
 
@@ -21,6 +22,7 @@ public class ExecManager {
     ExecManager(){
         exec_list = new HashMap<String, Class>();
         registerExec(new CommandExec());
+        registerExec(new ExitIfExec());
         registerExec(new GenerateRandomPlayerExec());
         registerExec(new MessageExec());
     }

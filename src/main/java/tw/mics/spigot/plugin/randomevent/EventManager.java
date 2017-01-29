@@ -14,6 +14,7 @@ public class EventManager {
         try {
             for(AbstractExec e : Config.getEvent(event_name).executes){
                     memory = e.run(memory);
+                    if(memory != null && memory.containsKey("exit") && memory.get("exit").equals("true")) break;
                     exec_count++;
             }
         } catch (ExecuteRunningException e) {
