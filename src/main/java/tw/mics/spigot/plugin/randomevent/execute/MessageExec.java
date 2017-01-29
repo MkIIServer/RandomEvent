@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import tw.mics.spigot.plugin.randomevent.exception.ExecuteRunningException;
 import tw.mics.spigot.plugin.randomevent.exception.ExecuteSetParameterException;
 
 public class MessageExec implements AbstractExec {
@@ -22,13 +23,17 @@ public class MessageExec implements AbstractExec {
     }
 
     @Override
-    public HashMap<String, String> run(HashMap<String, String> memory) {
+    public HashMap<String, String> run(HashMap<String, String> memory) throws ExecuteRunningException {
         String msg = AbstractExec.replaceMemory(message, memory);
         if(target.equals("@all")){
             Bukkit.broadcastMessage(msg);
         } else {
             Player p = Bukkit.getPlayer(AbstractExec.replaceMemory(target, memory));
-            if(p != null) p.sendMessage(msg);
+            if(p == null) {
+               throw new ExecuteRunningException("Can't find this player!");
+            } else {
+                p.sendMessage(msg);
+            }
         }
         return AbstractExec.initMemory(memory);
     }

@@ -7,6 +7,7 @@ import java.util.Random;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import tw.mics.spigot.plugin.randomevent.exception.ExecuteRunningException;
 import tw.mics.spigot.plugin.randomevent.exception.ExecuteSetParameterException;
 
 public class GenerateRandomPlayerExec implements AbstractExec {
@@ -24,12 +25,14 @@ public class GenerateRandomPlayerExec implements AbstractExec {
     }
 
     @Override
-    public HashMap<String, String> run(HashMap<String, String> memory) {
+    public HashMap<String, String> run(HashMap<String, String> memory) throws ExecuteRunningException {
         memory = AbstractExec.initMemory(memory);;
         Collection<? extends Player> players = Bukkit.getOnlinePlayers();
         if(players.size() > 0){
             Player p = (Player) players.toArray()[(new Random()).nextInt(players.size())];
             memory.put("player", p.getName());
+        } else {
+            throw new ExecuteRunningException("no any player in server.");
         }
         return memory;
     }

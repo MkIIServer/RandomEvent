@@ -4,12 +4,13 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import tw.mics.spigot.plugin.randomevent.exception.ExecuteRunningException;
 import tw.mics.spigot.plugin.randomevent.exception.ExecuteSetParameterException;
 
 public interface AbstractExec {
     public String getExecName();
     public void setParameter(String para) throws ExecuteSetParameterException;
-    HashMap<String, String> run(HashMap<String, String> memory);
+    HashMap<String, String> run(HashMap<String, String> memory) throws ExecuteRunningException;
     
     //Tools
     public static HashMap<String, String> initMemory(HashMap<String, String> memory){

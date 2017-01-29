@@ -94,15 +94,15 @@ public class Config {
                     AbstractExec exec = ExecManager.getInstange().createExec(exec_name, exec_para);
                     event.addExec(exec);
                 } catch (RandomEventException e) {
-                    RandomEvent.getInstance().getLogger().log(Level.WARNING, "========================================");
-                    RandomEvent.getInstance().getLogger().log(Level.WARNING, 
-                            String.format("event %s have para error on exec line: ", exec_name ));
-                    RandomEvent.getInstance().getLogger().log(Level.WARNING, exec_line);
-                    RandomEvent.getInstance().getLogger().log(Level.WARNING, "Exception: " + e.getClass().getSimpleName());
-                    RandomEvent.getInstance().getLogger().log(Level.WARNING, "Message: " + e.getErrorMessage());
-                    RandomEvent.getInstance().getLogger().log(Level.WARNING, 
-                            String.format("event %s is removed on list", event_name ));
-                    RandomEvent.getInstance().getLogger().log(Level.WARNING, "========================================");
+                    String error_msg = new String();
+                    error_msg += System.lineSeparator() + "============================================================";
+                    error_msg += System.lineSeparator() + String.format("event %s have parameter error on exec line: ", exec_name );
+                    error_msg += System.lineSeparator() +  exec_line;
+                    error_msg += System.lineSeparator() + "Exception: " + e.getClass().getSimpleName();
+                    error_msg += System.lineSeparator() + "Message: " + e.getErrorMessage();
+                    error_msg += System.lineSeparator() + String.format("event %s is removed on list", event_name );
+                    error_msg += System.lineSeparator() + "============================================================";
+                    RandomEvent.getInstance().getLogger().log(Level.WARNING, error_msg);
                     continue cancel_this_event;
                 }
             }
