@@ -2,6 +2,8 @@ package tw.mics.spigot.plugin.randomevent.execute;
 
 import java.util.HashMap;
 
+import org.bukkit.Bukkit;
+
 import tw.mics.spigot.plugin.randomevent.exception.ExecuteSetParameterException;
 
 public class MessageExec implements AbstractExec {
@@ -9,18 +11,23 @@ public class MessageExec implements AbstractExec {
     public String getExecName() {
         return "MESSAGE";
     }
+    private String target;
+    private String message;
 
     @Override
     public void setParameter(String para) throws ExecuteSetParameterException {
-        //String msg = AbstractExec.getParameter(para, "msg");
-        //if(msg == null || msg.isEmpty()){
-        //    throw new ExecuteSetParameterException("參數錯誤");
-        //}
+        target = AbstractExec.getParameter("target", para);
+        message = AbstractExec.getParameter("msg", para);
     }
 
     @Override
     public HashMap<String, String> run(HashMap<String, String> memory) {
-        // TODO Auto-generated method stub
+        String msg = AbstractExec.replaceMemory(message, memory);
+        if(target.equals("@all")){
+            Bukkit.broadcastMessage(msg);
+        } else {
+            Bukkit.getPlayer(AbstractExec.replaceMemory(target, memory)).sendMessage(msg);
+        }
         return AbstractExec.initMemory(memory);
     }
 }

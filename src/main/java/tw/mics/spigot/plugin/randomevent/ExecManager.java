@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import tw.mics.spigot.plugin.randomevent.exception.ExecuteNotExistException;
+import tw.mics.spigot.plugin.randomevent.exception.ExecuteSetParameterException;
 import tw.mics.spigot.plugin.randomevent.execute.AbstractExec;
 import tw.mics.spigot.plugin.randomevent.execute.BoradcastExec;
 import tw.mics.spigot.plugin.randomevent.execute.CommandExec;
@@ -35,16 +36,18 @@ public class ExecManager {
         exec_list.put(exec_name, exec.getClass());
     }
     
-    public AbstractExec createExec(String name, String para) throws ExecuteNotExistException{
+    public AbstractExec createExec(String name, String para) throws ExecuteNotExistException, ExecuteSetParameterException{
         if(!exec_list.containsKey(name))
             throw new ExecuteNotExistException(name + " execute is not exist");
         try {
             AbstractExec exec = (AbstractExec)exec_list.get(name).newInstance();
             exec.setParameter(para);
             return exec;
-        } catch (Exception e) { 
+        } catch(ExecuteSetParameterException e){
+            throw e;
+        } catch (Exception e) {
             e.printStackTrace(); 
-            throw new ExecuteNotExistException("create " + name + " new instance has error");
+            throw new ExecuteNotExistException("create " + name + " new instance has unknow error");
         }
     }
 

@@ -11,7 +11,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import tw.mics.spigot.plugin.randomevent.ExecManager;
 import tw.mics.spigot.plugin.randomevent.RandomEvent;
-import tw.mics.spigot.plugin.randomevent.exception.ExecuteNotExistException;
+import tw.mics.spigot.plugin.randomevent.exception.RandomEventException;
 import tw.mics.spigot.plugin.randomevent.execute.AbstractExec;
 
 public class Config {
@@ -94,14 +94,15 @@ public class Config {
                 try {
                     AbstractExec exec = ExecManager.getInstange().createExec(exec_name, exec_para);
                     event.addExec(exec);
-                } catch (ExecuteNotExistException e) {
+                } catch (RandomEventException e) {
                     RandomEvent.getInstance().getLogger().log(Level.WARNING, "========================================");
                     RandomEvent.getInstance().getLogger().log(Level.WARNING, 
                             String.format("event %s have para error on exec line: ", exec_name ));
                     RandomEvent.getInstance().getLogger().log(Level.WARNING, exec_line);
-                    RandomEvent.getInstance().getLogger().log(Level.WARNING, e.getErrorMessage());
+                    RandomEvent.getInstance().getLogger().log(Level.WARNING, "Exception: " + e.getClass().getSimpleName());
+                    RandomEvent.getInstance().getLogger().log(Level.WARNING, "Message: " + e.getErrorMessage());
                     RandomEvent.getInstance().getLogger().log(Level.WARNING, 
-                            String.format("event %s is removed on list", exec_name ));
+                            String.format("event %s is removed on list", event_name ));
                     RandomEvent.getInstance().getLogger().log(Level.WARNING, "========================================");
                     continue cancel_this_event;
                 }

@@ -18,7 +18,7 @@ public class GenerateRandomPlayerExec implements AbstractExec {
 
     @Override
     public void setParameter(String para) throws ExecuteSetParameterException {
-        if(!para.isEmpty()){
+        if(para != null && !para.isEmpty()){
             throw new ExecuteSetParameterException("this command don't need any parameter.");
         }
     }
@@ -27,8 +27,10 @@ public class GenerateRandomPlayerExec implements AbstractExec {
     public HashMap<String, String> run(HashMap<String, String> memory) {
         memory = AbstractExec.initMemory(memory);;
         Collection<? extends Player> players = Bukkit.getOnlinePlayers();
-        Player p = (Player) players.toArray()[(new Random()).nextInt(players.size())];
-        memory.put("player", p.getName());
+        if(players.size() > 0){
+            Player p = (Player) players.toArray()[(new Random()).nextInt(players.size())];
+            memory.put("player", p.getName());
+        }
         return memory;
     }
 }
