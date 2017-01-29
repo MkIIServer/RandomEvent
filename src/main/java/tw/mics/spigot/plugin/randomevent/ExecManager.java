@@ -29,7 +29,7 @@ public class ExecManager {
     public void registerExec(AbstractExec exec){
         String exec_name = exec.getExecName();
         if(exec_list.containsKey(exec_name)){
-            logger.log(Level.WARNING, "Can't load event " + exec_name);
+            logger.log(Level.WARNING, "Can't load execute " + exec_name);
             return;
         }
         exec_list.put(exec_name, exec.getClass());
