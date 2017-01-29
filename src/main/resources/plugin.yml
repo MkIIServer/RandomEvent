@@ -4,3 +4,15 @@ version: ${project.version}
 description: ${project.description}
 author: Mics
 website: https://mics.tw
+
+commands:
+  event:
+    description: manager event
+    usage: /event
+    permission: randomevent.admin
+    
+    
+permissions:
+  randomevent.admin:
+    description: can manager events, and trigger event.
+    default: op
