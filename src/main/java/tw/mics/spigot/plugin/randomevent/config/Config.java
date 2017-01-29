@@ -26,6 +26,7 @@ public class Config {
 
         set_config_if_not_exist("general.debug", false);
         set_config_if_not_exist("general.autoevent.enable", true);
+        set_config_if_not_exist("general.autoevent.min_player", 1);
         set_config_if_not_exist("general.autoevent.event_period_min", 20);
         set_config_if_not_exist("general.autoevent.event_period_max", 40);
         YamlConfiguration events = new YamlConfiguration();
