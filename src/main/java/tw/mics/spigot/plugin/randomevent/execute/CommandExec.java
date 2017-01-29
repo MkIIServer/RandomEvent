@@ -1,6 +1,6 @@
 package tw.mics.spigot.plugin.randomevent.execute;
 
-import java.util.List;
+import java.util.HashMap;
 
 public class CommandExec implements AbstractExec {
     @Override
@@ -12,10 +12,10 @@ public class CommandExec implements AbstractExec {
     public void setParameter(String para) {
         // TODO Auto-generated method stub
     }
-    
+
     @Override
-    public List<String> run(List<String> memory) {
-        //TODO running
+    public HashMap<String, String> run(HashMap<String, String> memory) {
+        // TODO Auto-generated method stub
         return AbstractExec.initMemory(memory);
     }
 }

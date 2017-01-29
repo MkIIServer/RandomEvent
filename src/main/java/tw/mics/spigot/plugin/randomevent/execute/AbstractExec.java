@@ -1,25 +1,19 @@
 package tw.mics.spigot.plugin.randomevent.execute;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 import tw.mics.spigot.plugin.randomevent.exception.ExecuteSetParameterException;
 
 public interface AbstractExec {
     public String getExecName();
     public void setParameter(String para) throws ExecuteSetParameterException;
-    public List<String> run(List<String> memory);
+    HashMap<String, String> run(HashMap<String, String> memory);
     
     //Tools
-    public static List<String> initMemory(List<String> memory){
+    public static HashMap<String, String> initMemory(HashMap<String, String> memory){
         if(memory == null){
-            memory = new ArrayList<String>();
+            memory = new HashMap<String, String>();
         }
         return memory;
-    }
-    
-    public static String getParameter(String raw,String setting){
-        //TODO 取出該參數
-        return raw;
     }
 }

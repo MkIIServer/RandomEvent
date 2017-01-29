@@ -1,6 +1,6 @@
 package tw.mics.spigot.plugin.randomevent.execute;
 
-import java.util.List;
+import java.util.HashMap;
 
 public class BoradcastExec implements AbstractExec {
     public String getExecName() {
@@ -12,8 +12,8 @@ public class BoradcastExec implements AbstractExec {
     }
 
     @Override
-    public List<String> run(List<String> memory) {
-        //TODO running
+    public HashMap<String, String> run(HashMap<String, String> memory) {
+        // TODO Auto-generated method stub
         return AbstractExec.initMemory(memory);
     }
 }
