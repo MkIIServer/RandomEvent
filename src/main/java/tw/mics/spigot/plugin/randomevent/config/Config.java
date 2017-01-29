@@ -33,7 +33,7 @@ public class Config {
         events.set("give_diamond.priority", 5);
         events.set("give_diamond.execute", new String[]{
                 "GENERATE_RANDOM_PLAYER",
-                "MESSAGE --player {player} --msg 撿到鑽石拉!!!",
+                "MESSAGE --target @all --msg {player} 撿到鑽石拉!!!",
                 "COMMAND --cmd give {player} diamond"
             });
         
@@ -76,6 +76,8 @@ public class Config {
                 RandomEvent.getInstance().getLogger().log(Level.WARNING, "config file can't save.");
             }
         }
+        //reload
+        cfg = YamlConfiguration.loadConfiguration(f);
     }
 
 

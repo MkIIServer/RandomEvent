@@ -31,10 +31,11 @@ public class MessageExec implements AbstractExec {
     @Override
     public HashMap<String, String> run(HashMap<String, String> memory) throws ExecuteRunningException {
         String msg = AbstractExec.replaceMemory(message, memory);
-        if(target.equals("@all")){
+        String p_str = AbstractExec.replaceMemory(target, memory);
+        if(p_str.equals("@all")){
             Bukkit.broadcastMessage(msg);
         } else {
-            Player p = Bukkit.getPlayer(AbstractExec.replaceMemory(target, memory));
+            Player p = Bukkit.getPlayer(p_str);
             if(p == null) {
                throw new ExecuteRunningException("Can't find this player!");
             } else {
