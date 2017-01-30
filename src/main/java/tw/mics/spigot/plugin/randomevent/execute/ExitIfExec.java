@@ -15,7 +15,11 @@ public class ExitIfExec implements AbstractExec {
 
     @Override
     public void setParameter(String para) throws ExecuteSetParameterException {
-        player_less_than = Integer.parseInt(AbstractExec.getParameter("player-less-than", para));
+        try {
+            player_less_than = Integer.parseInt(AbstractExec.getParameter("player-less-than", para));
+        } catch (NumberFormatException e){
+            throw new ExecuteSetParameterException("--player-less-than must be integer");
+        }
     }
 
     @Override

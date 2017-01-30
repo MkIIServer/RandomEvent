@@ -34,9 +34,9 @@ public class Config {
         events.set("give_diamond.priority", 5);
         events.set("give_diamond.execute", new String[]{
                 "EXIT_IF --player-less-than 1",
-                "GENERATE_RANDOM_PLAYER",
-                "MESSAGE --target @all --msg {player} 撿到鑽石拉!!!",
-                "COMMAND --cmd give {player} diamond"
+                "GENERATE_RANDOM_PLAYER --count 1",
+                "MESSAGE --target @all --msg {player1} 撿到鑽石拉!!!",
+                "COMMAND --cmd give {player1} diamond"
             });
         
         /*
