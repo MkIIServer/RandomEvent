@@ -23,7 +23,7 @@ public class ItemsCommand  implements CommandExecutor {
                 sender.sendMessage("§4this command must run on player");
             } else if(arg3.length == 1) {
                 Block block = ((Player)sender).getLocation().getBlock();
-                Items.setTreasure(block);
+                Items.setTreasure(block, 27);
                 sender.sendMessage("Treasure summon on your location.");
             } else {
                 sendHelp(sender);

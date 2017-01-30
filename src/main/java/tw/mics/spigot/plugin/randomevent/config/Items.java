@@ -26,15 +26,16 @@ public class Items {
     private static final File file = new File(RandomEvent.getInstance().getDataFolder(), "items.yml");
 
     // 取得掉落物品
-    public static void setTreasure(Location block){
-        setTreasure(block.getBlock());
+    public static void setTreasure(Location block, Integer count){
+        setTreasure(block.getBlock(), count);
     }
-    public static void setTreasure(Block block){
+    public static void setTreasure(Block block, Integer count){
         if(!(block instanceof InventoryHolder))block.setType(Material.CHEST);
         InventoryHolder chest = (InventoryHolder)block.getState();
         Inventory inv = chest.getInventory();
-        for(ItemStack i: Items.getDrops(5)){
-            inv.addItem(i);
+        for(ItemStack i: Items.getDrops(count)){
+            if(inv.firstEmpty() == -1) break;
+            inv.setItem(inv.firstEmpty(), i);
         }
     }
     
