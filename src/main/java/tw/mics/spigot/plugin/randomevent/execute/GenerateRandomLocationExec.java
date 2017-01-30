@@ -69,21 +69,21 @@ public class GenerateRandomLocationExec implements AbstractExec {
             random_max = max.get(xyz);
         } else {
             if(xyz.equals("x"))
-                random_max = (wb.getCenter().getBlockX() + (int)wb.getSize());
+                random_max = (wb.getCenter().getBlockX() + (int)wb.getSize()/2);
             else if(xyz.equals("y"))
                 random_max = 255;
             else if(xyz.equals("z"))
-                random_max = wb.getCenter().getBlockZ() + (int)wb.getSize();
+                random_max = wb.getCenter().getBlockZ() + (int)wb.getSize()/2;
         }
         if(min.containsKey(xyz)){
             random_min = min.get(xyz);
         } else {
             if(xyz.equals("x"))
-                random_min = wb.getCenter().getBlockX() - (int)wb.getSize();
+                random_min = wb.getCenter().getBlockX() - (int)wb.getSize()/2;
             else if(xyz.equals("y"))
                 random_min = 6;
             else if(xyz.equals("z"))
-                random_min = wb.getCenter().getBlockZ() - (int)wb.getSize();
+                random_min = wb.getCenter().getBlockZ() - (int)wb.getSize()/2;
         }
         return random_min + new Random().nextInt(random_max-random_min);
     }
