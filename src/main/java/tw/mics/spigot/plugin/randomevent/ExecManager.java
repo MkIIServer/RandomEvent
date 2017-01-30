@@ -12,6 +12,7 @@ import tw.mics.spigot.plugin.randomevent.execute.ExitIfExec;
 import tw.mics.spigot.plugin.randomevent.execute.GenerateRandomLocationExec;
 import tw.mics.spigot.plugin.randomevent.execute.GenerateRandomPlayerExec;
 import tw.mics.spigot.plugin.randomevent.execute.MessageExec;
+import tw.mics.spigot.plugin.randomevent.execute.SpawnMobExec;
 
 public class ExecManager {
     private static ExecManager instance;
@@ -27,6 +28,7 @@ public class ExecManager {
         registerExec(new GenerateRandomLocationExec());
         registerExec(new GenerateRandomPlayerExec());
         registerExec(new MessageExec());
+        registerExec(new SpawnMobExec());
     }
     
     public void registerExec(AbstractExec exec){
