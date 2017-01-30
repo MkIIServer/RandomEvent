@@ -61,7 +61,7 @@ public class Config {
         events.set("speed_dig.execute", new String[]{
             "GENERATE_RANDOM_PLAYER",
             "KEEP_EFFECT --target {player1} --effect FAST_DIGGING --level 2 --time 300 --period 5",
-            "MESSAGE --target @all --msg &a{player1} 昨天晚上練了手速, 提升了 200% 現在挖礦很猛很強大!! (持續 5 分鐘)",
+            "MESSAGE --target @all --msg &a{player1} 剛剛練了手速, 提升了 200%, 現在挖礦超快 (持續 5 分鐘)",
         });
         
         events.set("never_hungry.priority", 5);
