@@ -41,8 +41,8 @@ public class Config {
             });
         
         
-        events.set("ender_dragon.priority", 1);
-        events.set("ender_dragon.execute", new String[]{
+        events.set("wither.priority", 1);
+        events.set("wither.execute", new String[]{
                 "GENERATE_RANDOM_LOCATION --world " + Bukkit.getWorlds().get(0).getName() + 
                     " --y-lower 180 --y-higher 150",
                 "SPAWN_MOB --entity-type WITHER --location {world} {x} {y} {z}",
