@@ -54,10 +54,6 @@ public class ItemsCommand  implements CommandExecutor {
             } else {
                 sendHelp(sender);
             }
-        } else if (arg3[0].equalsIgnoreCase("getdrop")) {
-            sender.sendMessage("This command is not finish :(");
-        } else if (arg3[0].equalsIgnoreCase("getitemlist")) {
-            sender.sendMessage("This command is not finish :(");
         } else if (arg3[0].equalsIgnoreCase("reload")) {
             Items.load();
             sender.sendMessage("drops.yml loaded.");
@@ -70,8 +66,6 @@ public class ItemsCommand  implements CommandExecutor {
     private void sendHelp(CommandSender sender){
         sender.sendMessage("/items summon            - player only (summon chest at player location)");
         sender.sendMessage("/items additem <chance>  - this can add your on hand item to drops.yml");
-        sender.sendMessage("/items getitem <number>  - get treasure item");
-        sender.sendMessage("/items getitemlist       - get treasure item");
         sender.sendMessage("/items reload            - reload drops.yml");
     }
 }
