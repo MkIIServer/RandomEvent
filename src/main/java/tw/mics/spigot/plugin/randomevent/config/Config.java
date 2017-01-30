@@ -84,12 +84,15 @@ public class Config {
 
 
     static HashMap<String, ConfigEvent> events;
+    private static Integer total_priority;
     public static void load() {
         events = new HashMap<String, ConfigEvent>();
+        total_priority = 0;
         ConfigurationSection cfg_events = cfg.getConfigurationSection("events");
         cancel_this_event:
         for(String event_name : cfg_events.getKeys(false)){
-            ConfigEvent event = new ConfigEvent(event_name, cfg_events.getInt(event_name + ".priority"));
+            Integer priority = cfg_events.getInt(event_name + ".priority");
+            ConfigEvent event = new ConfigEvent(event_name, priority);
             for(String exec_line : cfg_events.getStringList(event_name + ".execute")){
                 String[] temp = exec_line.split(" ", 2);
                 String exec_name = temp[0];
@@ -111,11 +114,28 @@ public class Config {
                 }
             }
             events.put(event_name, event);
+            total_priority += priority;
         }
+    }
+
+    public static Integer getConfigInt(String key){
+        return cfg.getInt(key);
+    }
+    
+    public static String getConfigString(String key){
+        return cfg.getString(key);
     }
     
     public static ConfigEvent getEvent(String event_name){
         return events.get(event_name);
+    }
+    
+    public static HashMap<String, ConfigEvent> getEvents(){
+        return events;
+    }
+    
+    public static Integer getTotalPriority(){
+        return total_priority;
     }
     
     private static void set_config_if_not_exist(String path, Object value){

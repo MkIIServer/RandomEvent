@@ -19,6 +19,9 @@ public class RandomEvent extends JavaPlugin {
         Config.load();
         Items.load();
         
+        //register event
+        AutoEventManager.init();
+        
         //register commands
         this.getCommand("event").setExecutor(new EventCommand(this));
         this.getCommand("items").setExecutor(new ItemsCommand(this));

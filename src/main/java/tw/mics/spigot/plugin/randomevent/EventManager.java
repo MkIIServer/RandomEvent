@@ -1,13 +1,29 @@
 package tw.mics.spigot.plugin.randomevent;
 
 import java.util.HashMap;
+import java.util.Random;
 import java.util.logging.Level;
 
 import tw.mics.spigot.plugin.randomevent.config.Config;
+import tw.mics.spigot.plugin.randomevent.config.ConfigEvent;
 import tw.mics.spigot.plugin.randomevent.exception.ExecuteRunningException;
 import tw.mics.spigot.plugin.randomevent.execute.AbstractExec;
 
 public class EventManager {
+    public static void spawnRandomEvent(){
+        int random = new Random().nextInt(Config.getTotalPriority())+1;
+        HashMap<String, ConfigEvent> events = Config.getEvents();
+        for(String ce_str: events.keySet()){
+            ConfigEvent event = events.get(ce_str);
+            random -= event.priority;
+            if(random < 0){
+                RandomEvent.getInstance().getLogger().log(Level.INFO, "Event " + ce_str + "spawning...");
+                spawnEvent(ce_str);
+                return;
+            }
+        }
+    }
+    
     public static void spawnEvent(String event_name){
         HashMap<String, String> memory = null;
         int exec_count = 1;
@@ -36,6 +52,7 @@ public class EventManager {
             e.getMessage();
         }
     }
+    
     public static boolean isEventExist(String event_name){
         if(Config.getEvent(event_name) == null)return false;
         return true;
