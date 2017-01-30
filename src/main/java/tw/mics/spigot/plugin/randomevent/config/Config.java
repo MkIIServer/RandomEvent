@@ -60,14 +60,9 @@ public class Config {
         events.set("speed_dig.priority", 5);
         events.set("speed_dig.execute", new String[]{
             "GENERATE_RANDOM_PLAYER",
-            "KEEP_EFFECT --target {player} --effect FAST_DIGGING --level 2 --time 1200 --period 10",
-            "MESSAGE --target @all --msg &a{player} 昨天晚上練了手速, 提升了 200% 現在挖礦很猛很強大!!",
-            "KEEP_MESSAGE_WHEN_JOIN --target {player} --time 1200 --msg &a你的手速提升 200%, 趕快挖礦哦!",
-            "EXIT_IF --player-less-than 2",
-            "GENERATE_RANDOM_PLAYER",
-            "KEEP_EFFECT --target {player} --effect FAST_DIGGING --level 2 --time 1200 --period 10",
-            "MESSAGE --target @all --msg &a{player} 昨天晚上練了手速, 提升了 200% 現在挖礦很猛很強大!!",
-            "KEEP_MESSAGE_WHEN_JOIN --target {player} --time 1200 --msg &a你的手速提升 200%, 趕快挖礦哦!",
+            "KEEP_EFFECT --target {player1} --effect FAST_DIGGING --level 2 --time 600 --period 5",
+            "MESSAGE --target @all --msg &a{player1} 昨天晚上練了手速, 提升了 200% 現在挖礦很猛很強大!!",
+            "KEEP_MESSAGE_WHEN_JOIN --target {player1} --time 600 --msg &a你的手速提升 200%, 趕快挖礦哦!",
         });
         
         events.set("never_hungry.priority", 5);
