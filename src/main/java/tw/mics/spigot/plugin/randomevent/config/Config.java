@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -39,15 +40,15 @@ public class Config {
                 "COMMAND --cmd give {player1} diamond"
             });
         
-        /*
+        
         events.set("ender_dragon.priority", 1);
         events.set("ender_dragon.execute", new String[]{
                 "GENERATE_RANDOM_LOCATION --world " + Bukkit.getWorlds().get(0).getName() + 
                     " --y-lower 255 --y-higher 150",
-                "SPAWN_MOB --spawn ENDER_DRAGON --location {world} {x} {y} {z}",
-                "BROADCAST --msg 終界產生了宇宙裂縫, 有一個終界龍被傳送到了 {world} 的 x:{x}, y:{y}, z:{z}",
+                //"SPAWN_MOB --spawn ENDER_DRAGON --location {world} {x} {y} {z}",
+                "MESSAGE --target @all --msg 終界產生了宇宙裂縫, 有一個終界龍被傳送到了 {world} 的 x:{x}, y:{y}, z:{z}",
             });
-        
+        /*
         events.set("treasure.priority", 5);
         
         events.set("treasure.execute", new String[]{

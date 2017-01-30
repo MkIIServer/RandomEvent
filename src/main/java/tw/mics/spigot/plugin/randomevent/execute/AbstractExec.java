@@ -26,7 +26,7 @@ public interface AbstractExec {
         if(m.find()) {
             String[] key_and_value = m.group().split(" ", 2);
             if(key_and_value.length > 1){
-                return key_and_value[1];
+                return key_and_value[1].trim();
             }
         }
         return null;

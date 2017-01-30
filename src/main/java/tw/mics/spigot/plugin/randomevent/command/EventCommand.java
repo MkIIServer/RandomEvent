@@ -15,7 +15,7 @@ public class EventCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        EventManager.spawnEvent("give_diamond");
+        EventManager.spawnEvent("ender_dragon");
         return true;
     }
 
