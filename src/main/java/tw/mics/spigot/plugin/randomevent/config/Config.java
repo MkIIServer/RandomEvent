@@ -54,7 +54,7 @@ public class Config {
         events.set("treasure.execute", new String[]{
                 "GENERATE_RANDOM_LOCATION --world " + Bukkit.getWorlds().get(0).getName() + 
                     " --y-lower 150 --y-higher 20",
-                "SPAWN_TREASURE --location {world} {x} {y} {z} --random-x 25 --random-y 25 --random-z 25",
+                "SPAWN_TREASURE --item-count 9 --location {world} {x} {y} {z} --random-x 25 --random-y 25 --random-z 25",
                 "MESSAGE --target @all --msg 已經在 {world} 的  x: {x}, y: {y} z: {z} 的 ±25 格內的位置放置了一個寶藏",
             });
         events.set("speed_dig.priority", 5);

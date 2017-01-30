@@ -15,6 +15,7 @@ public class SpawnTreasureExec implements AbstractExec {
     private String random_y;
     private String random_z;
     private String location;
+    private String item_count;
 
     @Override
     public String getExecName() {
@@ -40,11 +41,16 @@ public class SpawnTreasureExec implements AbstractExec {
         if(random_z == null){
             random_z = "0";
         }
+        item_count = AbstractExec.getParameter("item-count", para);
+        if(item_count == null){
+            throw new  ExecuteSetParameterException("This execute parameter format is wrong. --item-count 15");
+        }
     }
 
     @Override
     public HashMap<String, String> run(HashMap<String, String> memory) throws ExecuteRunningException {
         memory = AbstractExec.initMemory(memory);
+        Integer count = Integer.parseInt(AbstractExec.replaceMemory(item_count, memory));
         String[] loc_str = AbstractExec.replaceMemory(location, memory).split(" ");
         Integer random_x_int = Integer.parseInt(AbstractExec.replaceMemory(random_x, memory));
         Integer random_y_int = Integer.parseInt(AbstractExec.replaceMemory(random_y, memory));
@@ -58,7 +64,7 @@ public class SpawnTreasureExec implements AbstractExec {
         loc.add(getRandom(random_x_int), getRandom(random_y_int), getRandom(random_z_int));
         if(loc.getY() > 255)loc.setY(255);
         if(loc.getY() < 5)loc.setY(5);
-        Items.setTreasure(loc);
+        Items.setTreasure(loc, count);
         return memory;
     }
     
