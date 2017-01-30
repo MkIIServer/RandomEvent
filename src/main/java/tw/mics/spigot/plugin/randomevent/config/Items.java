@@ -47,7 +47,7 @@ public class Items {
     }
 
     public static void addDrops(ItemStack item, double chance) {
-        Item newDrop = new Item(item, chance);
+        Item newDrop = new Item(item.clone(), chance);
         drops.add(newDrop);
         updateChanceCount();
         save();
