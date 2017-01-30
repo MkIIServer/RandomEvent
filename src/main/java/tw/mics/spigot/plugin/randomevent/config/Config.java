@@ -28,8 +28,8 @@ public class Config {
         set_config_if_not_exist("general.debug", false);
         set_config_if_not_exist("general.autoevent.enable", true);
         set_config_if_not_exist("general.autoevent.min_player", 1);
-        set_config_if_not_exist("general.autoevent.event_period_min", 20);
-        set_config_if_not_exist("general.autoevent.event_period_max", 40);
+        set_config_if_not_exist("general.autoevent.event_period_min_sec", 1200);
+        set_config_if_not_exist("general.autoevent.event_period_max_sec", 2400);
         YamlConfiguration events = new YamlConfiguration();
         
         events.set("give_diamond.priority", 5);
@@ -57,19 +57,24 @@ public class Config {
                 "SPAWN_TREASURE --location {world} {x} {y} {z} --random-x 25 --random-y 25 --random-z 25",
                 "MESSAGE --target @all --msg 已經在 {world} 的  x: {x}, y: {y} z: {z} 的 ±25 格內的位置放置了一個寶藏",
             });
-        /*
         events.set("speed_dig.priority", 5);
         events.set("speed_dig.execute", new String[]{
-            "KEEP_EFFECT_ALL_PLAYER --effect FAST_DIGGING --level 1 --time 1200 --period 10",
-            "KEEP_MESSAGE_WHEN_JOIN --time 1200 --msg 感覺手特別快, 趕快挖礦哦!",
+            "GENERATE_RANDOM_PLAYER",
+            "KEEP_EFFECT --target {player} --effect FAST_DIGGING --level 2 --time 1200 --period 10",
+            "MESSAGE --target @all --msg &a{player} 昨天晚上練了手速, 提升了 200% 現在挖礦很猛很強大!!",
+            "KEEP_MESSAGE_WHEN_JOIN --target {player} --time 1200 --msg &a你的手速提升 200%, 趕快挖礦哦!",
+            "EXIT_IF --player-less-than 2",
+            "GENERATE_RANDOM_PLAYER",
+            "KEEP_EFFECT --target {player} --effect FAST_DIGGING --level 2 --time 1200 --period 10",
+            "MESSAGE --target @all --msg &a{player} 昨天晚上練了手速, 提升了 200% 現在挖礦很猛很強大!!",
+            "KEEP_MESSAGE_WHEN_JOIN --target {player} --time 1200 --msg &a你的手速提升 200%, 趕快挖礦哦!",
         });
         
         events.set("never_hungry.priority", 5);
         events.set("never_hungry.execute", new String[]{
-            "KEEP_EFFECT_ALL_PLAYER --effect SATURATION --level 1 --time 1200 --period 10",
-                "KEEP_MESSAGE_WHEN_JOIN --time 1200 --msg 剛剛吃太飽, 不會餓了!",
+            "KEEP_EFFECT --target @all --effect SATURATION --level 1 --time 1200 --period 10",
+            "KEEP_MESSAGE_WHEN_JOIN --target @all --time 1200 --msg 剛剛吃太飽, 不會餓了!",
         });
-        */
         set_config_if_not_exist("events", events);
         
         if(cfg_save_flag){
