@@ -10,6 +10,10 @@ commands:
     description: manager event
     usage: /event
     permission: randomevent.admin
+  items:
+    description: manager event
+    usage: /event
+    permission: randomevent.admin
     
     
 permissions:
