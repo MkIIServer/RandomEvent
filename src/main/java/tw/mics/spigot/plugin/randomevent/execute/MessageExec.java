@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import net.md_5.bungee.api.ChatColor;
 import tw.mics.spigot.plugin.randomevent.exception.ExecuteRunningException;
 import tw.mics.spigot.plugin.randomevent.exception.ExecuteSetParameterException;
 
@@ -30,7 +31,7 @@ public class MessageExec implements AbstractExec {
 
     @Override
     public HashMap<String, String> run(HashMap<String, String> memory) throws ExecuteRunningException {
-        String msg = AbstractExec.replaceMemory(message, memory);
+        String msg = ChatColor.translateAlternateColorCodes('&', AbstractExec.replaceMemory(message, memory));
         String p_str = AbstractExec.replaceMemory(target, memory);
         if(p_str.equals("@all")){
             Bukkit.broadcastMessage(msg);
