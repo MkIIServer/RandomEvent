@@ -7,9 +7,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -22,6 +26,18 @@ public class Items {
     private static final File file = new File(RandomEvent.getInstance().getDataFolder(), "items.yml");
 
     // 取得掉落物品
+    public static void setTreasure(Location block){
+        setTreasure(block.getBlock());
+    }
+    public static void setTreasure(Block block){
+        if(!(block instanceof InventoryHolder))block.setType(Material.CHEST);
+        InventoryHolder chest = (InventoryHolder)block.getState();
+        Inventory inv = chest.getInventory();
+        for(ItemStack i: Items.getDrops(5)){
+            inv.addItem(i);
+        }
+    }
+    
     public static List<ItemStack> getDrops(int number) {
         List<ItemStack> items = new ArrayList<ItemStack>();
         for (int i = 0; i < number; i++) {

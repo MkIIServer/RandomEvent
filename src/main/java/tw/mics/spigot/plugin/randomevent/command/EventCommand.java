@@ -15,7 +15,15 @@ public class EventCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        EventManager.spawnEvent("ender_dragon");
+        if(args.length < 1){
+            sender.sendMessage("please enter event name: /event event_name");
+            return true;
+        }
+        if(EventManager.isEventExist(args[0])){
+            EventManager.spawnEvent(args[0]);
+            return true;
+        }
+        sender.sendMessage("this event not exist");
         return true;
     }
 

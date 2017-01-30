@@ -36,4 +36,8 @@ public class EventManager {
             e.getMessage();
         }
     }
+    public static boolean isEventExist(String event_name){
+        if(Config.getEvent(event_name) == null)return false;
+        return true;
+    }
 }

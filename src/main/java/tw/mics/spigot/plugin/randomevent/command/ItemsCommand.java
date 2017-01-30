@@ -1,14 +1,10 @@
 package tw.mics.spigot.plugin.randomevent.command;
 
-import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.InventoryHolder;
-import org.bukkit.inventory.ItemStack;
 
 import tw.mics.spigot.plugin.randomevent.RandomEvent;
 import tw.mics.spigot.plugin.randomevent.config.Items;
@@ -27,12 +23,7 @@ public class ItemsCommand  implements CommandExecutor {
                 sender.sendMessage("§4this command must run on player");
             } else if(arg3.length == 1) {
                 Block block = ((Player)sender).getLocation().getBlock();
-                if(!(block instanceof InventoryHolder))block.setType(Material.CHEST);
-                InventoryHolder chest = (InventoryHolder)block.getState();
-                Inventory inv = chest.getInventory();
-                for(ItemStack i: Items.getDrops(5)){
-                    inv.addItem(i);
-                }
+                Items.setTreasure(block);
                 sender.sendMessage("Treasure summon on your location.");
             } else {
                 sendHelp(sender);
