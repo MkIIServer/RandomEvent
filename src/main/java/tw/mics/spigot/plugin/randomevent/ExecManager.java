@@ -12,7 +12,6 @@ import tw.mics.spigot.plugin.randomevent.execute.ExitIfExec;
 import tw.mics.spigot.plugin.randomevent.execute.GenerateRandomLocationExec;
 import tw.mics.spigot.plugin.randomevent.execute.GenerateRandomPlayerExec;
 import tw.mics.spigot.plugin.randomevent.execute.KeepEffectExec;
-import tw.mics.spigot.plugin.randomevent.execute.KeepMessageWhenJoinExec;
 import tw.mics.spigot.plugin.randomevent.execute.MessageExec;
 import tw.mics.spigot.plugin.randomevent.execute.SpawnMobExec;
 import tw.mics.spigot.plugin.randomevent.execute.SpawnTreasureExec;
@@ -31,7 +30,6 @@ public class ExecManager {
         registerExec(new GenerateRandomLocationExec());
         registerExec(new GenerateRandomPlayerExec());
         registerExec(new KeepEffectExec());
-        registerExec(new KeepMessageWhenJoinExec());
         registerExec(new GenerateRandomPlayerExec());
         registerExec(new MessageExec());
         registerExec(new SpawnMobExec());

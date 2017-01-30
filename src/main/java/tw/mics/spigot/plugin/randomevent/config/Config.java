@@ -60,15 +60,14 @@ public class Config {
         events.set("speed_dig.priority", 5);
         events.set("speed_dig.execute", new String[]{
             "GENERATE_RANDOM_PLAYER",
-            "KEEP_EFFECT --target {player1} --effect FAST_DIGGING --level 2 --time 600 --period 5",
-            "MESSAGE --target @all --msg &a{player1} 昨天晚上練了手速, 提升了 200% 現在挖礦很猛很強大!!",
-            "KEEP_MESSAGE_WHEN_JOIN --target {player1} --time 600 --msg &a你的手速提升 200%, 趕快挖礦哦!",
+            "KEEP_EFFECT --target {player1} --effect FAST_DIGGING --level 2 --time 300 --period 5",
+            "MESSAGE --target @all --msg &a{player1} 昨天晚上練了手速, 提升了 200% 現在挖礦很猛很強大!! (持續 5 分鐘)",
         });
         
         events.set("never_hungry.priority", 5);
         events.set("never_hungry.execute", new String[]{
-            "KEEP_EFFECT --target @all --effect SATURATION --level 1 --time 1200 --period 10",
-            "KEEP_MESSAGE_WHEN_JOIN --target @all --time 1200 --msg 剛剛吃太飽, 不會餓了!",
+            "KEEP_EFFECT --target @all --effect SATURATION --level 1 --time 300 --period 5",
+            "MESSAGE --target @all --msg &a昨天大家吃了吃到飽, 現在餓不死了!! (持續 5 分鐘)",
         });
         set_config_if_not_exist("events", events);
         
