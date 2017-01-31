@@ -37,6 +37,7 @@ public class AutoEventManager implements Listener {
         if(Bukkit.getOnlinePlayers().size() < Config.getConfigInt("general.autoevent.min_player")){
             if(schedule_id != null){
                 Bukkit.getScheduler().cancelTask(schedule_id);
+                schedule_id = null;
             }
             return;
         } else {

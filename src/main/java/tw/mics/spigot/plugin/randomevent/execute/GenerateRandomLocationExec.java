@@ -49,7 +49,8 @@ public class GenerateRandomLocationExec implements AbstractExec {
                 x = getRandom(w.getWorldBorder(), "x");
                 y = getRandom(w.getWorldBorder(), "y");
                 z = getRandom(w.getWorldBorder(), "z");
-            }while(Cupboard.getInstance().cupboards.checkIsLimit(new Location(w,x,y,z)));
+            //TODO 改為更適合的方式
+            }while(Cupboard.getInstance().cupboards.checkExplosionAble(new Location(w,x,y,z), 30)); 
             
             memory.put("world", world); //TODO add random world
             memory.put("x", x.toString());
