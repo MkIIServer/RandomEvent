@@ -4,9 +4,11 @@ import java.util.HashMap;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.WorldBorder;
 
+import tw.mics.spigot.plugin.cupboard.Cupboard;
 import tw.mics.spigot.plugin.randomevent.exception.ExecuteRunningException;
 import tw.mics.spigot.plugin.randomevent.exception.ExecuteSetParameterException;
 
@@ -40,6 +42,22 @@ public class GenerateRandomLocationExec implements AbstractExec {
     public HashMap<String, String> run(HashMap<String, String> memory) throws ExecuteRunningException {
         memory = AbstractExec.initMemory(memory);;
         World w = Bukkit.getWorld(world);
+        try{
+            Class.forName("tw.mics.spigot.plugin.cupboard.Cupboard");
+            Integer x,y,z;
+            do{
+                x = getRandom(w.getWorldBorder(), "x");
+                y = getRandom(w.getWorldBorder(), "y");
+                z = getRandom(w.getWorldBorder(), "z");
+            }while(Cupboard.getInstance().cupboards.checkIsLimit(new Location(w,x,y,z)));
+            
+            memory.put("world", world); //TODO add random world
+            memory.put("x", x.toString());
+            memory.put("y", y.toString());
+            memory.put("z", z.toString());
+            return memory;
+        } catch (ClassNotFoundException e) {}
+
         memory.put("world", world); //TODO add random world
         memory.put("x", String.valueOf(getRandom(w.getWorldBorder(), "x")));
         memory.put("y", String.valueOf(getRandom(w.getWorldBorder(), "y")));

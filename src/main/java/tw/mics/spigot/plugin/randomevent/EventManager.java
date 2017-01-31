@@ -17,7 +17,7 @@ public class EventManager {
             ConfigEvent event = events.get(ce_str);
             random -= event.priority;
             if(random < 0){
-                RandomEvent.getInstance().getLogger().log(Level.INFO, "Event " + ce_str + "spawning...");
+                RandomEvent.getInstance().getLogger().log(Level.INFO, "Event " + ce_str + " spawning...");
                 spawnEvent(ce_str);
                 return;
             }
