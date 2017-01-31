@@ -78,7 +78,6 @@ public class KeepEffectExec implements AbstractExec {
                 } else {
                     Player p = Bukkit.getPlayer(target);
                     if(p == null || !p.isOnline()){
-                        stop();
                         return;
                     }
                     p.addPotionEffect(new PotionEffect(effect, period, level, true));
